@@ -2,8 +2,8 @@
 data <- read.table('./household_power_consumption.txt',sep=';',header=TRUE,na.strings='?', stringsAsFactors = FALSE)
 
 #subset the data based on required dates
-smalldata <- subset(data, grepl("^2/[1|2]/2007", data[,1]))
-smalldata$Date <- as.Date(smalldata$Date, format='%m/%d/%Y')
+smalldata <- subset(data, grepl("^[1|2]/2/2007", data[,1]))
+smalldata$Date <- as.Date(smalldata$Date, format='%d/%m/%Y')
 
 #create timestamp col
 smalldata <- transform(smalldata, timestamp=as.POSIXct(paste(Date, Time)), "%d/%m/%Y %H:%M:%S")
